@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuidando de Quem Ensina — Cartilha de Saúde Mental Docente</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-escuro: #1a3a2e;
+    --verde-medio: #2d6a4f;
+    --verde-claro: #52b788;
+    --verde-menta: #b7e4c7;
+    --areia: #f5ede0;
+    --areia-escura: #e8d5b7;
+    --marrom: #6b4226;
+    --dourado: #c9a84c;
+    --terracota: #c0533a;
+    --branco: #fdfaf5;
+    --texto: #1c2b22;
+    --cinza-texto: #4a5e53;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--branco);
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* ── CAPA ── */
+  .capa {
+    min-height: 100vh;
+    background: var(--verde-escuro);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .capa-esquerda {
+    padding: 4rem 3rem 4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+
+  .capa-direita {
+    background: var(--verde-medio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .capa-direita::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(82,183,136,0.25) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .capa-ilustracao {
+    font-size: 9rem;
+    line-height: 1;
+    text-align: center;
+    filter: drop-shadow(0 0 40px rgba(82,183,136,0.4));
+    animation: flutuar 4s ease-in-out infinite;
+  }
+
+  @keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+
+  .capa-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    border: 1px solid var(--verde-claro);
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .capa h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.02;
+    color: var(--branco);
+    margin-bottom: 1.5rem;
+  }
+
+  .capa h1 em {
+    color: var(--verde-claro);
+    font-style: italic;
+  }
+
+  .capa-subtitulo {
+    font-size: 1.1rem;
+    color: var(--verde-menta);
+    line-height: 1.7;
+    max-width: 420px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .capa-info {
+    border-top: 1px solid rgba(82,183,136,0.3);
+    padding-top: 1.5rem;
+  }
+
+  .capa-info p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: rgba(183,228,199,0.7);
+    letter-spacing: 0.05em;
+    line-height: 2;
+  }
+
+  .capa-info strong { color: var(--verde-menta); }
+
+  .nav-scroll {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(26,58,46,0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+    border-bottom: 1px solid rgba(82,183,136,0.2);
+  }
+
+  .nav-scroll.visivel { transform: translateY(0); }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--verde-claro);
+    font-style: italic;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--verde-menta);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--verde-claro); }
+
+  /* ── SEÇÕES ── */
+  section {
+    padding: 5rem 0;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+
+  .secao-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--verde-medio);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .secao-tag::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--verde-claro);
+    opacity: 0.4;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--verde-escuro);
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--verde-escuro);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    line-height: 1.85;
+    color: var(--cinza-texto);
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    background: var(--areia);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 30rem;
+    color: rgba(45,106,79,0.05);
+    position: absolute;
+    top: -8rem;
+    left: -2rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .intro-destaque {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--verde-escuro);
+    line-height: 1.5;
+    border-left: 4px solid var(--verde-claro);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat-box {
+    background: var(--verde-escuro);
+    color: var(--branco);
+    padding: 2rem;
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  .stat-box::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 8px;
+    right: -8px; bottom: -8px;
+    border: 2px solid var(--verde-claro);
+    pointer-events: none;
+  }
+
+  .stat-numero {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--verde-claro);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-desc {
+    font-size: 0.95rem;
+    color: var(--verde-menta);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* ── BURNOUT ── */
+  .burnout {
+    background: var(--verde-escuro);
+    color: var(--branco);
+  }
+
+  .burnout h2 { color: var(--branco); }
+  .burnout p { color: var(--verde-menta); }
+
+  .fases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    border: 1px solid rgba(82,183,136,0.3);
+  }
+
+  .fase {
+    padding: 2rem 1.5rem;
+    border-right: 1px solid rgba(82,183,136,0.2);
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .fase:last-child { border-right: none; }
+  .fase:hover { background: rgba(82,183,136,0.1); }
+
+  .fase-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--verde-claro);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .fase-icone {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .fase h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--branco);
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+  }
+
+  .fase p {
+    font-size: 0.88rem;
+    color: rgba(183,228,199,0.75);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .burnout-dimensoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .dimensao {
+    border: 1px solid rgba(82,183,136,0.3);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dimensao::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--verde-claro);
+    transition: width 0.4s ease;
+  }
+
+  .dimensao:hover::after { width: 100%; }
+
+  .dimensao-icone { font-size: 2.5rem; margin-bottom: 1rem; }
+  .dimensao h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--branco);
+    margin-bottom: 0.8rem;
+  }
+  .dimensao p { font-size: 0.9rem; color: rgba(183,228,199,0.75); margin: 0; }
+
+  /* ── DIREITOS ── */
+  .direitos { background: var(--areia); }
+
+  .accordion-item {
+    border: 1px solid var(--areia-escura);
+    margin-bottom: 1rem;
+    background: var(--branco);
+    overflow: hidden;
+  }
+
+  .accordion-header {
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: background 0.2s;
+    user-select: none;
+  }
+
+  .accordion-header:hover { background: var(--areia); }
+
+  .accordion-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .accordion-icone-wrap {
+    width: 44px; height: 44px;
+    background: var(--verde-escuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .accordion-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--verde-escuro);
+    margin: 0;
+  }
+
+  .accordion-seta {
+    font-size: 1.2rem;
+    color: var(--verde-medio);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .accordion-item.aberto .accordion-seta { transform: rotate(180deg); }
+
+  .accordion-corpo {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s;
+    padding: 0 2rem;
+  }
+
+  .accordion-item.aberto .accordion-corpo {
+    max-height: 1200px;
+    padding: 0 2rem 2rem;
+  }
+
+  .lei-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.7rem;
+    background: var(--verde-menta);
+    color: var(--verde-escuro);
+    margin: 0.25rem 0.25rem 0 0;
+  }
+
+  .destaque-legal {
+    background: var(--verde-escuro);
+    color: var(--verde-menta);
+    padding: 1.2rem 1.5rem;
+    margin: 1rem 0;
+    border-left: 3px solid var(--verde-claro);
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* ── TÉCNICAS ── */
+  .tecnicas { background: var(--branco); }
+
+  .tecnicas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .tecnica-card {
+    border: 1px solid var(--areia-escura);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .tecnica-card:hover {
+    border-color: var(--verde-claro);
+    transform: translateY(-4px);
+  }
+
+  .tecnica-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--verde-menta);
+    position: absolute;
+    top: -1rem;
+    right: 1rem;
+    line-height: 1;
+    z-index: 0;
+  }
+
+  .tecnica-card h3 {
+    position: relative;
+    z-index: 1;
+    font-size: 1.2rem;
+    color: var(--verde-escuro);
+    margin-bottom: 0.5rem;
+  }
+
+  .tecnica-card p {
+    position: relative;
+    z-index: 1;
+    font-size: 0.95rem;
+  }
+
+  /* Respiração Interativa */
+  .respiracao-widget {
+    background: var(--verde-escuro);
+    padding: 3rem;
+    text-align: center;
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .respiracao-widget h3 {
+    color: var(--branco);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .respiracao-widget > p {
+    color: var(--verde-menta);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .circulo-respiracao {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--verde-claro), var(--verde-medio));
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--branco);
+    font-style: italic;
+    cursor: pointer;
+    transition: transform 0.1s;
+    box-shadow: 0 0 0 0 rgba(82,183,136,0.4);
+  }
+
+  .circulo-respiracao.inspirar {
+    animation: expandir 4s ease-in-out forwards;
+  }
+  .circulo-respiracao.segurar {
+    animation: pulsar 7s ease-in-out forwards;
+  }
+  .circulo-respiracao.expirar {
+    animation: contrair 8s ease-in-out forwards;
+  }
+
+  @keyframes expandir {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(82,183,136,0.4); }
+    100% { transform: scale(1.5); box-shadow: 0 0 0 30px rgba(82,183,136,0); }
+  }
+  @keyframes pulsar {
+    0%, 100% { transform: scale(1.5); }
+    50% { transform: scale(1.52); }
+  }
+  @keyframes contrair {
+    0% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+  }
+
+  .resp-instrucao {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--verde-menta);
+    margin-bottom: 0.5rem;
+  }
+
+  .resp-timer {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--branco);
+    margin-bottom: 1.5rem;
+    min-height: 3.5rem;
+  }
+
+  .btn-resp {
+    background: var(--verde-claro);
+    color: var(--verde-escuro);
+    border: none;
+    padding: 0.9rem 2.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    font-weight: 500;
+  }
+
+  .btn-resp:hover { background: var(--verde-menta); transform: translateY(-2px); }
+  .btn-resp:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ── AMBIENTE ── */
+  .ambiente { background: var(--areia); }
+
+  .ambiente-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .ambiente-card {
+    background: var(--branco);
+    padding: 2rem;
+    border-bottom: 3px solid var(--verde-claro);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .ambiente-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(26,58,46,0.12);
+  }
+
+  .ambiente-icone { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
+  .ambiente-card h3 { font-size: 1.05rem; margin-bottom: 0.8rem; }
+  .ambiente-card p { font-size: 0.88rem; margin: 0; }
+
+  /* ── MURAL ── */
+  .mural {
+    background: var(--verde-escuro);
+    padding: 5rem 0;
+    overflow: hidden;
+  }
+
+  .mural h2 { color: var(--branco); }
+  .mural .secao-tag { color: var(--verde-claro); }
+
+  .postit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .postit {
+    padding: 1.8rem;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--verde-escuro);
+    position: relative;
+    transform: rotate(var(--rot, 0deg));
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+
+  .postit:hover {
+    transform: rotate(0deg) scale(1.04);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    z-index: 2;
+  }
+
+  .postit::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 30px; height: 6px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 0 0 4px 4px;
+  }
+
+  .postit-verde { background: #d8f3dc; --rot: -1.5deg; }
+  .postit-amarelo { background: #fff9c4; --rot: 1deg; }
+  .postit-rosa { background: #ffd6e0; --rot: -0.8deg; }
+  .postit-azul { background: #d0f0fd; --rot: 1.3deg; }
+  .postit-laranja { background: #ffe0b2; --rot: -1.2deg; }
+  .postit-lilas { background: #e8d5f5; --rot: 0.7deg; }
+
+  .postit-autor {
+    display: block;
+    margin-top: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--verde-medio);
+    font-style: normal;
+  }
+
+  /* ── REFERÊNCIAS ── */
+  .referencias { background: var(--branco); }
+
+  .ref-lista {
+    margin-top: 2rem;
+    border-top: 1px solid var(--areia-escura);
+  }
+
+  .ref-item {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--areia-escura);
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .ref-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--verde-claro);
+    letter-spacing: 0.1em;
+    padding-top: 0.25rem;
+  }
+
+  .ref-texto {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--cinza-texto);
+    margin: 0;
+  }
+
+  /* ── RODAPÉ ── */
+  footer {
+    background: var(--verde-escuro);
+    padding: 3rem 0;
+    border-top: 1px solid rgba(82,183,136,0.3);
+  }
+
+  .footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .footer-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--verde-claro);
+    margin-bottom: 0.8rem;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    color: rgba(183,228,199,0.6);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .integrantes-lista {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: rgba(183,228,199,0.6);
+    line-height: 2;
+    letter-spacing: 0.04em;
+    column-count: 2;
+    column-gap: 1.5rem;
+    list-style: none;
+  }
+
+  /* ── UTILS ── */
+  .alerta {
+    background: rgba(192,83,58,0.1);
+    border-left: 4px solid var(--terracota);
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .alerta p { color: var(--texto); margin: 0; font-size: 0.92rem; }
+
+  .dica {
+    background: var(--verde-menta);
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .dica-icone { font-size: 1.4rem; flex-shrink: 0; }
+  .dica p { color: var(--verde-escuro); margin: 0; font-size: 0.92rem; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--verde-claro);
+    z-index: 200;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* ── FADE IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visivel {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .capa { grid-template-columns: 1fr; }
+    .capa-direita { display: none; }
+    .capa-esquerda { padding: 3rem 1.5rem; }
+    .intro-grid { grid-template-columns: 1fr; }
+    .fases-grid { grid-template-columns: 1fr 1fr; }
+    .burnout-dimensoes { grid-template-columns: 1fr; }
+    .tecnicas-grid { grid-template-columns: 1fr; }
+    .ambiente-grid { grid-template-columns: 1fr 1fr; }
+    .postit-grid { grid-template-columns: 1fr 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="nav-scroll" id="navScroll">
+  <span class="nav-logo">Cuidando de Quem Ensina</span>
+  <ul class="nav-links">
+    <li><a href="#apresentacao">Apresentação</a></li>
+    <li><a href="#burnout">Burnout</a></li>
+    <li><a href="#direitos">Direitos</a></li>
+    <li><a href="#tecnicas">Técnicas</a></li>
+    <li><a href="#ambiente">Ambiente</a></li>
+  </ul>
+</nav>
+
+<!-- CAPA -->
+<section class="capa" id="topo">
+  <div class="capa-esquerda">
+    <div>
+      <span class="capa-tag">Cartilha de Saúde Mental Docente</span>
+      <h1>Cuidando<br>de quem<br><em>ensina</em></h1>
+      <p class="capa-subtitulo">
+        Uma cartilha educativa e informativa sobre saúde mental no trabalho docente, reunindo saberes da Psicologia, do Direito e da Engenharia em prol dos professores da Escola Municipal Pedro Barbosa Júnior.
+      </p>
+    </div>
+    <div class="capa-info">
+      <p><strong>Instituição:</strong> Centro Universitário de Maceió — UNIMA/AFYA</p>
+      <p><strong>Projeto:</strong> Extensão III — Turma N3</p>
+      <p><strong>Orientadora:</strong> Prof.ª Verônica Teixeira Marques</p>
+      <p><strong>Ano:</strong> 2026 · Maceió, AL</p>
+    </div>
+  </div>
+  <div class="capa-direita">
+    <div class="capa-ilustracao">🌱</div>
+  </div>
+</section>
+
+<!-- APRESENTAÇÃO -->
+<section class="intro" id="apresentacao">
+  <div class="container">
+    <div class="secao-tag">01 — Apresentação</div>
+    <div class="intro-grid">
+      <div class="fade-in">
+        <h2>Quem está cuidando de quem ensina?</h2>
+        <p class="intro-destaque">"Quando a gente fala de educação, normalmente o foco está no aluno. Mas hoje queremos trazer uma reflexão diferente."</p>
+        <p>O professor é o pilar central de qualquer sistema educacional, mas frequentemente é o profissional que mais sofre com a invisibilidade de seu desgaste psíquico. A saúde mental docente não deve ser compreendida como uma responsabilidade exclusivamente individual, mas como resultado das condições estruturais e organizacionais do ambiente de trabalho.</p>
+        <p>De acordo com Christophe Dejours, o trabalho pode ser tanto fonte de prazer quanto de sofrimento, a depender das condições em que é realizado e do reconhecimento recebido pelo trabalhador. No contexto da docência, a intensificação das demandas, a pressão por resultados e a sobrecarga de funções contribuem de forma significativa para o aumento do sofrimento psíquico.</p>
+        <div class="dica">
+          <span class="dica-icone">📚</span>
+          <p>Esta cartilha foi elaborada por estudantes de Psicologia, Direito e Engenharia do UNIMA/AFYA como produto do Projeto de Extensão III, com base em pesquisa científica e intervenção direta na escola.</p>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="stat-box">
+          <div class="stat-numero">72%</div>
+          <p class="stat-desc">dos professores brasileiros relataram exaustão, segundo pesquisa da Confederação Nacional dos Trabalhadores em Educação (CNTE, 2023).</p>
+        </div>
+        <div class="stat-box" style="margin-top:2.5rem;">
+          <div class="stat-numero">63%</div>
+          <p class="stat-desc">dos docentes estão em risco de Burnout, decorrente de carga horária excessiva, baixos salários e falta de suporte pedagógico institucional.</p>
+        </div>
+        <div class="stat-box" style="margin-top:2.5rem;">
+          <div class="stat-numero">450 mil</div>
+          <p class="stat-desc">professores ministram aulas em mais de uma escola no Brasil, acumulando jornadas extenuantes e deslocamentos exaustivos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BURNOUT E ESTRESSE -->
+<section class="burnout" id="burnout">
+  <div class="container">
+    <div class="secao-tag" style="color:var(--verde-claro)">02 — Saúde Mental e Burnout</div>
+    <h2>Compreendendo o adoecimento docente</h2>
+    <p style="max-width:680px">A Síndrome de Burnout é reconhecida pela Organização Mundial da Saúde (OMS) como fenômeno ocupacional classificado na CID-11 sob o código <strong style="color:var(--verde-claro)">QD85</strong>. Constitui a principal manifestação do adoecimento mental no trabalho docente e se manifesta em três dimensões centrais.</p>
+
+    <div class="burnout-dimensoes fade-in">
+      <div class="dimensao">
+        <div class="dimensao-icone">🔥</div>
+        <h4>Exaustão Emocional</h4>
+        <p>Esgotamento profundo dos recursos afetivos do trabalhador, caracterizado pela sensação de que não há mais energia disponível para a realização das atividades cotidianas.</p>
+      </div>
+      <div class="dimensao">
+        <div class="dimensao-icone">🧊</div>
+        <h4>Despersonalização</h4>
+        <p>Distanciamento afetivo e cínico em relação aos alunos, colegas e à instituição, funcionando como estratégia defensiva do organismo frente ao esgotamento emocional.</p>
+      </div>
+      <div class="dimensao">
+        <div class="dimensao-icone">📉</div>
+        <h4>Baixa Realização Profissional</h4>
+        <p>Redução da percepção de competência e de significado no trabalho, com sensação de ineficácia e ausência de conquistas profissionais relevantes.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:4rem" class="fade-in">
+      <div class="secao-tag" style="color:var(--verde-claro)">As 4 Fases do Estresse</div>
+      <p style="margin-bottom:0">Segundo a pesquisadora Marilda Lipp, o estresse ocorre quando as demandas do ambiente ultrapassam a capacidade de adaptação do indivíduo, evoluindo progressivamente em quatro fases:</p>
+    </div>
+
+    <div class="fases-grid fade-in">
+      <div class="fase">
+        <span class="fase-num">FASE 01</span>
+        <span class="fase-icone">⚡</span>
+        <h4>Alerta</h4>
+        <p>O organismo libera adrenalina, gerando energia e vigor para lidar com emergências. Surgem tensão muscular, ansiedade e irritabilidade.</p>
+      </div>
+      <div class="fase">
+        <span class="fase-num">FASE 02</span>
+        <span class="fase-icone">🛡️</span>
+        <h4>Resistência</h4>
+        <p>O indivíduo tenta se adaptar ao estressor. Emergem dificuldades de memória e cansaço intenso como sintomas centrais.</p>
+      </div>
+      <div class="fase">
+        <span class="fase-num">FASE 03</span>
+        <span class="fase-icone">⚠️</span>
+        <h4>Quase-exaustão</h4>
+        <p>O organismo inicia colapso gradual. Doenças latentes se manifestam e surge a necessidade de intervenção médica e psicológica.</p>
+      </div>
+      <div class="fase">
+        <span class="fase-num">FASE 04</span>
+        <span class="fase-icone">🆘</span>
+        <h4>Exaustão</h4>
+        <p>Estágio crítico com comprometimento imunológico, depressão e perda do gosto pela vida. Requer intervenção profissional urgente.</p>
+      </div>
+    </div>
+
+    <div class="alerta" style="background:rgba(201,168,76,0.12);border-color:var(--dourado);margin-top:3rem" >
+      <p style="color:var(--areia)">⚠️ <strong>Atenção:</strong> Um ponto central da teoria de Marilda Lipp é que os maiores níveis de estresse são frequentemente autoproduzidos pelos chamados "pensamentos disfuncionais" — a forma como o professor interpreta situações como o comportamento dos alunos ou a falta de tempo atua como uma fábrica interna de estresse. A reestruturação cognitiva é a principal ferramenta para romper esse ciclo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIREITOS -->
+<section class="direitos" id="direitos">
+  <div class="container">
+    <div class="secao-tag">03 — Direitos dos Professores</div>
+    <h2>Segurança jurídica no trabalho docente</h2>
+    <p>A Constituição Federal de 1988 garante que a saúde é um direito de todos, incluindo condições de trabalho psicologicamente adequadas. Do ponto de vista jurídico, o empregador tem o dever de garantir um ambiente laboral seguro, saudável e digno. Quando o trabalho contribui para o adoecimento físico ou mental, configura-se uma doença ocupacional, equiparada a acidente de trabalho. Clique em cada tema para mais informações.</p>
+
+    <div style="margin-top:2.5rem" class="fade-in">
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="accordion-header-left">
+            <div class="accordion-icone-wrap">🏥</div>
+            <h3>Burnout como Doença Ocupacional</h3>
+          </div>
+          <span class="accordion-seta">▾</span>
+        </div>
+        <div class="accordion-corpo">
+          <p>O Burnout está classificado na CID-11 da OMS sob o código QD85, caracterizado como fenômeno relacionado ao trabalho. A <strong>Lei nº 8.213/91</strong>, em seu artigo 20, considera acidente de trabalho a doença profissional ou do trabalho. Portanto, se o Burnout é causado pelo trabalho, deve ser tratado como doença ocupacional.</p>
+          <div class="destaque-legal">"Quando o trabalho adoece o professor ou qualquer outro profissional, a lei não apenas garante renda durante o afastamento, mas também protege sua permanência no emprego."</div>
+          <div>
+            <span class="lei-tag">CID-11 · Código QD85</span>
+            <span class="lei-tag">Lei nº 8.213/91 · Art. 20</span>
+            <span class="lei-tag">CF/88 · Art. 196</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="accordion-header-left">
+            <div class="accordion-icone-wrap">📋</div>
+            <h3>Afastamento e Auxílio-Doença</h3>
+          </div>
+          <span class="accordion-seta">▾</span>
+        </div>
+        <div class="accordion-corpo">
+          <p><strong>Para professores temporários ou CLT:</strong> ao apresentar sintomas de Burnout, o docente deve procurar psicólogo e psiquiatra para obter laudo médico e entregá-lo à escola. O art. 59 da Lei nº 8.213/91 garante auxílio-doença ao segurado incapacitado por mais de 15 dias consecutivos.</p>
+          <p>Importante: o art. 26, II, da mesma lei dispensa o período de carência para doenças do trabalho, o que beneficia professores com diagnóstico de Burnout ocupacional.</p>
+          <p><strong>Para professores efetivos (estatutários):</strong> o laudo deve ser entregue à escola, que encaminha à Secretaria Municipal de Educação (SEMED). Após perícia oficial confirmando a incapacidade, o professor é afastado por prazo variável, mantendo a integralidade do salário.</p>
+          <div>
+            <span class="lei-tag">Lei nº 8.213/91 · Art. 59</span>
+            <span class="lei-tag">Lei nº 8.213/91 · Art. 26, II</span>
+            <span class="lei-tag">Lei nº 8.213/91 · Art. 60</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="accordion-header-left">
+            <div class="accordion-icone-wrap">🛡️</div>
+            <h3>Estabilidade e Proteção do Emprego</h3>
+          </div>
+          <span class="accordion-seta">▾</span>
+        </div>
+        <div class="accordion-corpo">
+          <p>Para professores celetistas e temporários, o <strong>art. 118 da Lei nº 8.213/91</strong> garante manutenção do contrato de trabalho por 12 meses após a cessação do auxílio-doença. Como o Burnout é doença ocupacional equiparada a acidente de trabalho, pode gerar essa estabilidade, desde que haja reconhecimento formal como doença do trabalho.</p>
+          <p>Para professores estatutários, a estabilidade é adquirida após o estágio probatório de 3 anos, nos termos do art. 40 da Constituição Federal, dispensando a aplicação desse dispositivo.</p>
+          <p>Em qualquer hipótese, o docente pode ter direito a benefícios previdenciários, estabilidade no emprego e até indenização, se houver comprovada responsabilidade da instituição pelo adoecimento.</p>
+          <div>
+            <span class="lei-tag">Lei nº 8.213/91 · Art. 118</span>
+            <span class="lei-tag">CF/88 · Art. 40</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="accordion-header-left">
+            <div class="accordion-icone-wrap">⚖️</div>
+            <h3>Violência Física e os Instrumentos Legais</h3>
+          </div>
+          <span class="accordion-seta">▾</span>
+        </div>
+        <div class="accordion-corpo">
+          <p>A violência de alunos ou responsáveis contra professores é uma questão crescente. Em 2025, um caso em Pão de Açúcar (AL) evidenciou como professores podem ficar em posição de vulnerabilidade dentro da própria sala de aula. A legislação brasileira oferece instrumentos de proteção:</p>
+          <ul style="margin:1rem 0 1rem 1.5rem;color:var(--cinza-texto);line-height:2;font-size:0.95rem">
+            <li><strong>Art. 129 do CP</strong> — Lesão corporal</li>
+            <li><strong>Art. 132 do CP</strong> — Perigo para a vida ou saúde de outrem</li>
+            <li><strong>Arts. 103 e 112 do ECA</strong> — Ato infracional e medidas socioeducativas</li>
+            <li><strong>Art. 932, I do CC</strong> — Responsabilidade civil dos pais por atos dos filhos menores</li>
+          </ul>
+          <div>
+            <span class="lei-tag">CP · Arts. 129 e 132</span>
+            <span class="lei-tag">ECA · Arts. 103 e 112</span>
+            <span class="lei-tag">CC · Art. 932, I</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="accordion-header-left">
+            <div class="accordion-icone-wrap">🗣️</div>
+            <h3>Violência Psicológica, Moral e Simbólica</h3>
+          </div>
+          <span class="accordion-seta">▾</span>
+        </div>
+        <div class="accordion-corpo">
+          <p>Violência não se restringe à agressão física. O Código Penal Brasileiro tipifica diversas formas de agressão às quais todo membro do corpo docente está sujeito. Piadas de mau gosto, ameaças, comentários caluniosos e práticas vexatórias devem ser reconhecidos como condutas punidas pela lei e combatidas de forma preventiva.</p>
+          <p>É relevante notar que existe uma construção social em torno do ato violento que torna mais complexo o reconhecimento da violência contra o professor, podendo ela ocorrer de forma digital, presencial ou física.</p>
+          <ul style="margin:1rem 0 1rem 1.5rem;color:var(--cinza-texto);line-height:2;font-size:0.95rem">
+            <li><strong>Art. 138 CP</strong> — Calúnia</li>
+            <li><strong>Art. 139 CP</strong> — Difamação</li>
+            <li><strong>Art. 140 CP</strong> — Injúria</li>
+            <li><strong>Art. 146 CP</strong> — Constrangimento mediante violência ou grave ameaça</li>
+            <li><strong>Art. 147 CP</strong> — Ameaça</li>
+            <li><strong>Art. 147-A CP</strong> — Perseguição (stalking)</li>
+          </ul>
+          <div>
+            <span class="lei-tag">CP · Arts. 138, 139, 140</span>
+            <span class="lei-tag">CP · Arts. 146, 147, 147-A</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="accordion-header-left">
+            <div class="accordion-icone-wrap">🎖️</div>
+            <h3>Aposentadoria por Incapacidade</h3>
+          </div>
+          <span class="accordion-seta">▾</span>
+        </div>
+        <div class="accordion-corpo">
+          <p>A aposentadoria por incapacidade permanente ocorre quando o trabalhador não tem mais condições de exercer sua atividade de forma definitiva. É essencial destacar que essa incapacidade pode ser de ordem psicológica: transtornos como ansiedade, depressão e Burnout, quando comprovadamente incapacitantes, também fundamentam esse direito previdenciário.</p>
+          <p>Geralmente, o processo inicia-se pelo auxílio por incapacidade temporária, como etapa de avaliação e tentativa de recuperação ou adaptação do trabalhador. Quando não há possibilidade de retorno ao trabalho, o sistema jurídico garante a aposentadoria como forma de preservar a dignidade da pessoa.</p>
+          <div class="destaque-legal">O Direito não atua apenas depois do problema — ele também existe para prevenir. Garantir um ambiente de trabalho saudável não é apenas uma boa prática: é uma obrigação legal.</div>
+          <div>
+            <span class="lei-tag">CF/88 · Art. 201</span>
+            <span class="lei-tag">Lei nº 8.213/91</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TÉCNICAS -->
+<section class="tecnicas" id="tecnicas">
+  <div class="container">
+    <div class="secao-tag">04 — Autocuidado e Ferramentas Práticas</div>
+    <h2>Estratégias de autorregulação e bem-estar</h2>
+    <p>Intervenções individuais são importantes, mas insuficientes sem mudanças estruturais. Apresentamos aqui ferramentas práticas que os professores podem incorporar à sua rotina para a gestão do estresse e a promoção do autocuidado.</p>
+
+    <div class="tecnicas-grid fade-in">
+      <div class="tecnica-card">
+        <span class="tecnica-num">01</span>
+        <h3>Ritual de Descompressão Pós-Turno</h3>
+        <p>Estabeleça um ritual de transição entre o trabalho e a vida pessoal. Isso pode incluir: trocar de roupa ao chegar em casa (sinal simbólico de "saída do trabalho"), desativar notificações de grupos de pais por períodos definidos e praticar higiene do sono com horários regulares.</p>
+      </div>
+      <div class="tecnica-card">
+        <span class="tecnica-num">02</span>
+        <h3>Matriz de Prioridades</h3>
+        <p>Utilize a "Matriz de Prioridade" para separar o urgente do importante, evitando o acúmulo de carga cognitiva. Classifique tarefas em quatro quadrantes: urgente/importante, importante/não urgente, urgente/não importante e nem urgente/nem importante.</p>
+      </div>
+      <div class="tecnica-card">
+        <span class="tecnica-num">03</span>
+        <h3>Reestruturação Cognitiva</h3>
+        <p>Identifique "pensamentos disfuncionais" — interpretações automáticas negativas de situações do cotidiano escolar. Questione: "Essa interpretação é fato ou suposição? Existe uma forma alternativa de ver essa situação?" Esse processo reduz a autoprodução de estresse.</p>
+      </div>
+      <div class="tecnica-card">
+        <span class="tecnica-num">04</span>
+        <h3>Pausas Ativas</h3>
+        <p>Incorpore micro-pausas de 5 minutos a cada 50 minutos de atividade intensa. Levante-se, alongue-se, observe algo distante para descansar a visão e beba água. Essas pausas regulares previnem a fadiga cognitiva e melhoram o foco e a criatividade.</p>
+      </div>
+    </div>
+
+    <!-- Respiração Interativa -->
+    <div class="respiracao-widget fade-in">
+      <h3>Técnica de Respiração 4-7-8</h3>
+      <p>Ferramenta de autorregulação imediata para redução do estresse. Clique para iniciar.</p>
+      <div class="resp-instrucao" id="respInstrucao">TOQUE PARA COMEÇAR</div>
+      <div class="resp-timer" id="respTimer">—</div>
+      <div class="circulo-respiracao" id="circuloResp" onclick="iniciarRespiracao()">
+        Iniciar
+      </div>
+      <div style="height:1.5rem"></div>
+      <button class="btn-resp" id="btnResp" onclick="iniciarRespiracao()">▶ Iniciar Prática</button>
+      <p style="font-size:0.8rem;color:rgba(183,228,199,0.5);margin-top:1.5rem;margin-bottom:0">Inspirar 4s · Segurar 7s · Expirar 8s — Repita 3 a 4 vezes</p>
+    </div>
+  </div>
+</section>
+
+<!-- AMBIENTE -->
+<section class="ambiente" id="ambiente">
+  <div class="container">
+    <div class="secao-tag">05 — Intervenção no Ambiente</div>
+    <h2>O espaço físico como suporte à saúde mental</h2>
+    <p>Segundo Abraham Maslow, os indivíduos necessitam de condições básicas de segurança, conforto e pertencimento para alcançar o bem-estar psicológico. O espaço físico da escola — especialmente a sala dos professores — exerce influência direta sobre o estado emocional e a capacidade de recuperação do docente. Transformar esse espaço em um território de cuidado é uma das ações centrais deste projeto.</p>
+
+    <div class="ambiente-grid fade-in">
+      <div class="ambiente-card">
+        <span class="ambiente-icone">💡</span>
+        <h3>Iluminação e Conforto</h3>
+        <p>Substituir lâmpadas brancas frias por tons mais quentes reduz a tensão visual e cria um ambiente mais acolhedor. A adição de luminárias de apoio nos pontos de descanso contribui para a desativação fisiológica do estado de alerta.</p>
+      </div>
+      <div class="ambiente-card">
+        <span class="ambiente-icone">🌿</span>
+        <h3>Design Biofílico</h3>
+        <p>A introdução de plantas no espaço de descanso vai além do aspecto estético: elementos naturais reduzem cortisol, purificam o ar e produzem um efeito calmante comprovado por estudos de psicologia ambiental.</p>
+      </div>
+      <div class="ambiente-card">
+        <span class="ambiente-icone">📌</span>
+        <h3>Mural "Reconectando"</h3>
+        <p>Um mural com mensagens positivas voltadas à saúde ("Sua saúde vale mais que um plano de aula perfeito") e cartões de gratidão dos alunos gera o chamado "salário emocional", combatendo a desvalorização profissional.</p>
+      </div>
+      <div class="ambiente-card">
+        <span class="ambiente-icone">💧</span>
+        <h3>Lembretes de Saúde</h3>
+        <p>Pequenos totens ou adesivos próximos à cafeteira com lembretes de respiração e hidratação funcionam como âncoras sensoriais que interrompem o ciclo automático de estresse durante a jornada.</p>
+      </div>
+      <div class="ambiente-card">
+        <span class="ambiente-icone">🗺️</span>
+        <h3>Panfletos Instrutivos</h3>
+        <p>Materiais ilustrados fixados na sala de descanso ensinando técnicas de respiração e relaxamento garantem que o conhecimento permaneça acessível mesmo após a intervenção presencial.</p>
+      </div>
+      <div class="ambiente-card">
+        <span class="ambiente-icone">🪑</span>
+        <h3>Ergonomia e Organização</h3>
+        <p>A disposição do mobiliário e a organização do espaço influenciam diretamente o nível de recuperação durante os intervalos. Um espaço organizado e funcional favorece a desativação cognitiva necessária ao descanso real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MURAL VIRTUAL -->
+<section class="mural" id="mural">
+  <div class="container">
+    <div class="secao-tag">06 — Mural Reconectando</div>
+    <h2>Mensagens de cuidado e valorização</h2>
+    <p style="color:var(--verde-menta);max-width:600px">Palavras que reafirmam o valor da profissão docente e reforçam a cultura do autocuidado — para que cada professor que entrar na sala dos professores encontre um "abraço visual".</p>
+
+    <div class="postit-grid fade-in">
+      <div class="postit postit-verde">
+        "Sua saúde vale mais do que um plano de aula perfeito."
+        <span class="postit-autor">— Equipe do Projeto</span>
+      </div>
+      <div class="postit postit-amarelo">
+        "Você não precisa ter todas as respostas. Basta estar presente — e isso já é muito."
+        <span class="postit-autor">— Para os professores</span>
+      </div>
+      <div class="postit postit-rosa">
+        "Cuidar de si não é egoísmo. É o que torna possível cuidar de todos os outros."
+        <span class="postit-autor">— Psicologia do autocuidado</span>
+      </div>
+      <div class="postit postit-azul">
+        "Como está sua respiração agora? Beba água e reconecte-se."
+        <span class="postit-autor">— Lembrete de saúde</span>
+      </div>
+      <div class="postit postit-laranja">
+        "O mundo precisa de professores saudáveis, não perfeitos."
+        <span class="postit-autor">— Mensagem dos alunos</span>
+      </div>
+      <div class="postit postit-lilas">
+        "Antes de ensinar o próximo, verifique: você está bem? Essa pergunta também importa."
+        <span class="postit-autor">— Projeto Cuidando de quem ensina</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERÊNCIAS -->
+<section class="referencias">
+  <div class="container">
+    <div class="secao-tag">07 — Referências Científicas</div>
+    <h2>Base teórica e legal</h2>
+    <p>Esta cartilha fundamenta-se nas seguintes referências bibliográficas e normativas:</p>
+
+    <div class="ref-lista fade-in">
+      <div class="ref-item">
+        <span class="ref-num">01</span>
+        <p class="ref-texto">DIEHL, L.; CARLOTTO, M. S. Síndrome de Burnout em professores: uma revisão sistemática da literatura brasileira. <em>Psicologia Escolar e Educacional</em>, v. 18, n. 3, p. 437-446, 2014.</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">02</span>
+        <p class="ref-texto">DEJOURS, C. <em>A loucura do trabalho: estudo de psicopatologia do trabalho</em>. Tradução de Ana Isabel Paraguay e Lúcia Leal Ferreira. 6. ed. São Paulo: Cortez, 2015.</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">03</span>
+        <p class="ref-texto">LIPP, M. E. N. <em>O stress do professor</em>. 4. ed. Campinas, SP, 2002.</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">04</span>
+        <p class="ref-texto">AMARAL, G. F.; GONÇALVES, L. M.; COELHO, V. S. P. <em>Saúde mental e trabalho: os desafios do século XXI</em>. 2. ed. São Paulo: Atlas, 2021.</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">05</span>
+        <p class="ref-texto">MINAYO, M. C. S.; OLIVEIRA, R. V. C. <em>Saúde mental no trabalho: múltiplos olhares e intervenções</em>. Rio de Janeiro: Fiocruz, 2019.</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">06</span>
+        <p class="ref-texto">LEITÃO, S. <em>Argumentação e desenvolvimento do pensamento reflexivo</em>. Recife: Editora UFPE, 2007.</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">07</span>
+        <p class="ref-texto">ORGANIZAÇÃO MUNDIAL DA SAÚDE (OMS). <em>Classificação Internacional de Doenças — CID-11</em>. Código QD85: Burnout. Genebra: OMS, 2019.</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">08</span>
+        <p class="ref-texto">BRASIL. <em>Lei nº 8.213, de 24 de julho de 1991</em>. Dispõe sobre os Planos de Benefícios da Previdência Social. Brasília: Congresso Nacional, 1991. (Arts. 20, 26, 59, 60, 118).</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">09</span>
+        <p class="ref-texto">BRASIL. <em>Constituição da República Federativa do Brasil de 1988</em>. Brasília: Senado Federal, 1988. (Arts. 5º, 40, 196, 206).</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">10</span>
+        <p class="ref-texto">BRASIL. <em>Código Penal Brasileiro</em>. Decreto-Lei nº 2.848/1940. Arts. 129, 132, 138, 139, 140, 146, 147, 147-A.</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">11</span>
+        <p class="ref-texto">BRASIL. <em>Estatuto da Criança e do Adolescente</em>. Lei nº 8.069/1990. Arts. 103, 112. Brasília: Congresso Nacional, 1990.</p>
+      </div>
+      <div class="ref-item">
+        <span class="ref-num">12</span>
+        <p class="ref-texto">BRASIL. <em>Código Civil Brasileiro</em>. Lei nº 10.406/2002. Art. 932, I. Brasília: Congresso Nacional, 2002.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-titulo">Cuidando de Quem Ensina</div>
+      <p>Projeto de Extensão III — Turma N3<br>
+      Centro Universitário de Maceió — UNIMA/AFYA<br>
+      Orientação: Prof.ª Verônica Teixeira Marques<br>
+      Maceió, AL · 2026</p>
+    </div>
+    <div>
+      <p style="color:var(--verde-claro);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Mono',monospace;margin-bottom:0.8rem">Equipe do Projeto</p>
+      <ul class="integrantes-lista">
+        <li>Enzo Fon Lins</li>
+        <li>Estefany R. Sá Lessa</li>
+        <li>Evilly Tainá da Silva</li>
+        <li>Kayo G. T. de Carvalho</li>
+        <li>Lucas R. O. Bernardo</li>
+        <li>Maria Laura A. Felizardo</li>
+        <li>Mônica Kirst</li>
+        <li>Sabrina M. P. de Barros</li>
+        <li>Sylnelly C. S. Chaves</li>
+        <li>Vinícius O. C. Alves</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // NAV + PROGRESS
+  const nav = document.getElementById('navScroll');
+  const bar = document.getElementById('progressBar');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const pct = (scrollTop / docHeight) * 100;
+    bar.style.width = pct + '%';
+    nav.classList.toggle('visivel', scrollTop > 200);
+  });
+
+  // FADE IN
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visivel'); }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ACCORDION
+  function toggleAccordion(header) {
+    const item = header.parentElement;
+    const isOpen = item.classList.contains('aberto');
+    document.querySelectorAll('.accordion-item.aberto').forEach(i => i.classList.remove('aberto'));
+    if (!isOpen) item.classList.add('aberto');
+  }
+
+  // RESPIRAÇÃO
+  let respAtiva = false;
+  let respTimeout = null;
+
+  function iniciarRespiracao() {
+    if (respAtiva) return;
+    respAtiva = true;
+    document.getElementById('btnResp').disabled = true;
+
+    const circulo = document.getElementById('circuloResp');
+    const instrucao = document.getElementById('respInstrucao');
+    const timer = document.getElementById('respTimer');
+    let ciclo = 0;
+    const maxCiclos = 4;
+
+    function countDown(segundos, cb) {
+      let s = segundos;
+      timer.textContent = s;
+      const iv = setInterval(() => {
+        s--;
+        timer.textContent = s;
+        if (s <= 0) { clearInterval(iv); cb(); }
+      }, 1000);
+    }
+
+    function fazerCiclo() {
+      if (ciclo >= maxCiclos) {
+        instrucao.textContent = 'PRÁTICA CONCLUÍDA ✓';
+        timer.textContent = '—';
+        circulo.className = 'circulo-respiracao';
+        circulo.textContent = 'Reiniciar';
+        respAtiva = false;
+        document.getElementById('btnResp').disabled = false;
+        document.getElementById('btnResp').textContent = '↺ Repetir Prática';
+        return;
+      }
+      ciclo++;
+
+      instrucao.textContent = `CICLO ${ciclo} DE ${maxCiclos} · INSPIRAR`;
+      circulo.className = 'circulo-respiracao inspirar';
+      circulo.textContent = 'Inspire...';
+      countDown(4, () => {
+        instrucao.textContent = `CICLO ${ciclo} DE ${maxCiclos} · SEGURAR`;
+        circulo.className = 'circulo-respiracao segurar';
+        circulo.textContent = 'Segure...';
+        countDown(7, () => {
+          instrucao.textContent = `CICLO ${ciclo} DE ${maxCiclos} · EXPIRAR`;
+          circulo.className = 'circulo-respiracao expirar';
+          circulo.textContent = 'Expire...';
+          countDown(8, () => {
+            circulo.className = 'circulo-respiracao';
+            fazerCiclo();
+          });
+        });
+      });
+    }
+
+    fazerCiclo();
+  }
+</script>
+</body>
+</html>
